@@ -1,5 +1,6 @@
 package fr.sg.kata.domain;
 
+import fr.sg.kata.exception.AccountCreditException;
 import fr.sg.kata.exception.NegativeAmountException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -87,6 +88,17 @@ public class AccountTest {
         assertThrows(NegativeAmountException.class,
                 () -> account.deposit(new Amount(BigDecimal.valueOf(100).negate())),
                 "Amount should be positive !");
+    }
+
+    @Test
+    void shouldThrowAccountCreditExceptionWhenWithdrawalAmountGreaterThanAccountBalance() {
+        // Given
+        final Account account = new Account(AMOUNT_OF_100, FIXED_CLOCK);
+
+        // When
+        assertThrows(AccountCreditException.class,
+                () -> account.withdraw(new Amount(BigDecimal.valueOf(200))),
+                "No enough money in this account to make this withdrawal !");
     }
 
 }
