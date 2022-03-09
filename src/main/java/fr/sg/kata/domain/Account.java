@@ -39,6 +39,10 @@ public class Account {
         this.operationHistory.addOperation(withdrawalOperation, this.balance);
     }
 
+    public void printStatement(final StatementPrinter accountStatementPrinter) {
+        accountStatementPrinter.print(this.operationHistory);
+    }
+
     private void checkAccountCredit(final Amount amount) {
         if (this.balance.getValue().compareTo(amount.getValue()) < 0) {
             throw new AccountCreditException("No enough money in this account to make this withdrawal !");
@@ -47,5 +51,10 @@ public class Account {
 
     public Balance getBalance() {
         return balance;
+    }
+
+
+    public OperationHistory getOperationHistory() {
+        return operationHistory;
     }
 }

@@ -101,4 +101,22 @@ public class AccountTest {
                 "No enough money in this account to make this withdrawal !");
     }
 
+
+    @Test
+    void shouldPrintAccountStatementUsingMockedStatementPrinter() {
+        // Given
+        final MockAccountStatementPrinter mockAccountStatementPrinter = new MockAccountStatementPrinter();
+        final Account account = new Account(AMOUNT_OF_TEN, FIXED_CLOCK);
+
+        account.deposit(AMOUNT_OF_TEN);
+        account.deposit(AMOUNT_OF_100);
+        account.withdraw(AMOUNT_OF_TEN);
+
+        // When
+        account.printStatement(mockAccountStatementPrinter);
+
+        // Then
+        assertEquals(account.getOperationHistory().getStatements(), mockAccountStatementPrinter.getStatements());
+    }
+
 }

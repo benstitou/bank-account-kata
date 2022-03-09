@@ -15,4 +15,7 @@ public class OperationHistory {
         this.statements.add(new Statement(operation, balance));
     }
 
+    public List<Statement> getStatements() {
+        return statements;
+    }
 }
