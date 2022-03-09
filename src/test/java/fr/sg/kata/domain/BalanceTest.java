@@ -35,4 +35,18 @@ public class BalanceTest {
         // Then
         assertEquals(BigDecimal.valueOf(20), newBalanceOf20.getValue());
     }
+
+    @Test
+    void shouldBalanceBeTenWhenSubtractingAmountOfTenToBalanceOf20() {
+        // Given
+        final BigDecimal value = BigDecimal.valueOf(20);
+        final Balance balanceOf20 = new Balance(value);
+        final Amount amountOfTen = new Amount(BigDecimal.TEN);
+
+        // When
+        final Balance newBalanceOf20 = balanceOf20.subtract(amountOfTen);
+
+        // Then
+        assertEquals(BigDecimal.valueOf(10), newBalanceOf20.getValue());
+    }
 }

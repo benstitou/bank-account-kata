@@ -15,6 +15,10 @@ public class Balance {
         return new Balance(this.value.add(amount.getValue()));
     }
 
+    public Balance subtract(Amount amount) {
+        return new Balance(this.value.subtract(amount.getValue()));
+    }
+
     public BigDecimal getValue() {
         return value;
     }

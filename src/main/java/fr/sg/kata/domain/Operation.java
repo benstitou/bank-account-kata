@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Operation {
 
     public enum Type {
-        DEPOSIT
+        DEPOSIT, WITHDRAWAL
     }
 
     private final Type type;

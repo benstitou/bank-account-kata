@@ -30,6 +30,12 @@ public class Account {
         this.operationHistory.addOperation(depositOperation, this.balance);
     }
 
+    public void withdraw(final Amount amount) {
+        this.balance = this.balance.subtract(amount);
+        final Operation withdrawalOperation = new Operation(Operation.Type.WITHDRAWAL, LocalDate.now(this.clock), amount);
+        this.operationHistory.addOperation(withdrawalOperation, this.balance);
+    }
+
     public Balance getBalance() {
         return balance;
     }

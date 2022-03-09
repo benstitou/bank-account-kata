@@ -65,4 +65,28 @@ public class AccountTest {
                 "Amount should be positive !");
     }
 
+    @Test
+    void shouldBalanceBeZeroWhenWithdrawalAllCredits() {
+        // Given
+        final Account account = new Account(AMOUNT_OF_TEN, FIXED_CLOCK);
+
+        // When
+        account.withdraw(AMOUNT_OF_TEN);
+
+        // Then
+        assertEquals(new Balance(BigDecimal.ZERO), account.getBalance());
+    }
+
+
+    @Test
+    void shouldThrowNegativeAmountExceptionWhenWithdrawalNegativeAmount() {
+        // Given
+        final Account account = new Account(FIXED_CLOCK);
+
+        // When
+        assertThrows(NegativeAmountException.class,
+                () -> account.deposit(new Amount(BigDecimal.valueOf(100).negate())),
+                "Amount should be positive !");
+    }
+
 }
