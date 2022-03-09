@@ -11,6 +11,14 @@ public class Balance {
         this.value = value;
     }
 
+    public Balance add(Amount amount) {
+        return new Balance(this.value.add(amount.getValue()));
+    }
+
+    public BigDecimal getValue() {
+        return value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
