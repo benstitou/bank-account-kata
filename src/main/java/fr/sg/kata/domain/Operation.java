@@ -17,4 +17,16 @@ public class Operation {
         this.date = date;
         this.amount = amount;
     }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public Amount getAmount() {
+        return amount;
+    }
 }

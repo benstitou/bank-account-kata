@@ -1,6 +1,6 @@
 package fr.sg.kata.domain;
 
-public class Statement {
+public class Statement implements Comparable<Statement> {
 
     private final Operation operation;
     private final Balance balance;
@@ -10,4 +10,16 @@ public class Statement {
         this.balance = balance;
     }
 
+    public Operation getOperation() {
+        return operation;
+    }
+
+    public Balance getBalance() {
+        return balance;
+    }
+
+    @Override
+    public int compareTo(Statement o) {
+        return this.getOperation().getDate().compareTo(o.getOperation().getDate());
+    }
 }
