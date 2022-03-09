@@ -10,6 +10,10 @@ public class Account {
         this.balance = new Balance(BigDecimal.ZERO);
     }
 
+    public Account(Amount amount) {
+        this.balance = new Balance(amount.getValue());
+    }
+
     public Balance getBalance() {
         return balance;
     }
